@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Task } from '../types/taskTypes';
-import { fetchAllTasks, removeTask } from '../services/taskAPI';
+import React, { useEffect, useState } from "react";
+import "./TaskList.css";
+import { Task } from "../types/taskTypes";
+import { fetchAllTasks, removeTask } from "../services/taskAPI";
+import { useNavigate } from "react-router-dom";
 
 const TaskListDisplay: React.FC = () => {
   const [taskList, setTaskList] = useState<Task[]>([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadTasks();
@@ -20,16 +24,19 @@ const TaskListDisplay: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Task Manager</h2>
-      <ul>
-        {taskList.map(task => (
+    <div className="task-list">
+      <button type="button" onClick={() => navigate("/")}>
+        Back
+      </button>
+      <h2>Task List</h2>
+      <ol>
+        {taskList.map((task) => (
           <li key={task.id}>
             {task.title} - {task.status} - {task.priority}
             <button onClick={() => handleTaskDelete(task.id)}>Delete</button>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };
