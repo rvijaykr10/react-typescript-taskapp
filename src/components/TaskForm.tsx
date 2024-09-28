@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import "./TaskForm.css";
-import {
-  TaskFormInput,
-  // TaskStatusEnum,
-  // PriorityEnum
-} from "../types/taskTypes";
+import { TaskFormInput } from "../types/taskTypes";
 import { createNewTask, updateExistingTask } from "../services/taskAPI";
 import { useNavigate } from "react-router-dom";
 
 interface TaskFormProps {
-  taskId?: number; // Optional for editing
-  initialData?: TaskFormInput; // Data for editing
+  taskId?: number;
+  initialData?: TaskFormInput;
   onSuccess: () => void;
 }
 
@@ -33,7 +29,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
       await createNewTask(formData);
     }
     setFormData({ title: "", description: "" });
-    onSuccess(); // Callback after success
+    onSuccess();
   };
 
   return (

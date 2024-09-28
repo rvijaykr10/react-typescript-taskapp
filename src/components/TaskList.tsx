@@ -32,7 +32,7 @@ const TaskListDisplay: React.FC = () => {
       <ol>
         {taskList.map((task) => (
           <li key={task.id}>
-            {task.title} - {task.status} - {task.priority}
+            {task.title}{" "}
             <button onClick={() => handleTaskDelete(task.id)}>Delete</button>
           </li>
         ))}
