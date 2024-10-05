@@ -46,6 +46,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
         />
         <textarea
+          rows={4}
           placeholder="Task Description"
           value={formData.description}
           onChange={(e) =>
