@@ -1,1 +1,2 @@
-json-server --watch db.json --port 5000
+to start ui server -> npm start 
+to start backend server -> npm run start:json-server
