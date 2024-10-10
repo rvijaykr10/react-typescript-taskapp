@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Task, TaskFormInput } from "../types/taskTypes";
 
-// const BASE_URL = 'http://localhost:5000/tasks';
-const BASE_URL = "https://tymk2t-5000.csb.app/tasks";
+const BASE_URL = "http://localhost:5000/tasks";
+// const BASE_URL = "https://tymk2t-5000.csb.app/tasks";
 
 export const fetchAllTasks = async (): Promise<Task[]> => {
   const response = await axios.get(BASE_URL);
