@@ -36,9 +36,9 @@ const TaskListDisplay: React.FC = () => {
       <h2>Task List</h2>
       {isLoading && "Loading !"}
       {!isLoading && taskList.length === 0 && "No Data Found !"}
-      {taskList.length > 0 && (
+      {taskList?.length > 0 && (
         <ol>
-          {taskList.map((task) => (
+          {taskList?.map((task) => (
             <li key={task.id}>
               <div>
                 <p>{task.title}</p>
