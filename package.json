@@ -22,12 +22,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently \"npm run start:app\" \"npm run start:json-server\"",
-    "start:app": "DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
-    "start:json-server": "json-server --watch db.json --port 5000",
+    "start": "react-scripts start",
     "build": "react-scripts build"
   },
-  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -45,8 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "json-server": "^1.0.0-beta.3"
   }
 }
