@@ -3,6 +3,8 @@ import "./TaskForm.css";
 import { TaskFormInput } from "../types/taskTypes";
 import { createNewTask, updateExistingTask } from "../services/taskAPI";
 import { useNavigate } from "react-router-dom";
+import { IoMdArrowBack } from "react-icons/io";
+import { IoIosAdd } from "react-icons/io";
 
 interface TaskFormProps {
   taskId?: number;
@@ -34,8 +36,8 @@ const TaskForm: React.FC<TaskFormProps> = ({
 
   return (
     <div className="task-form">
-      <button type="button" onClick={() => navigate("/")}>
-        Back
+      <button className="back-btn" type="button" onClick={() => navigate("/")}>
+        <IoMdArrowBack /> &nbsp; back to home page
       </button>
       <h2>Add Task:</h2>
       <form onSubmit={handleFormSubmit}>
@@ -53,7 +55,10 @@ const TaskForm: React.FC<TaskFormProps> = ({
             setFormData({ ...formData, description: e.target.value })
           }
         ></textarea>
-        <button type="submit">{taskId ? "Update" : "Create"} Task</button>
+        <button type="submit">
+          <IoIosAdd />
+          &nbsp;{taskId ? "Update" : "Create"} Task
+        </button>
       </form>
     </div>
   );

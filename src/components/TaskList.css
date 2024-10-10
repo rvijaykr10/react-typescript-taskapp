@@ -28,3 +28,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.task-list .back-btn {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.task-list .delete-btn {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+}

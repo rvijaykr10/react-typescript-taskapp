@@ -3,6 +3,8 @@ import "./TaskList.css";
 import { Task } from "../types/taskTypes";
 import { fetchAllTasks, removeTask } from "../services/taskAPI";
 import { useNavigate } from "react-router-dom";
+import { IoMdArrowBack } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 
 const TaskListDisplay: React.FC = () => {
   const [taskList, setTaskList] = useState<Task[]>([]);
@@ -25,8 +27,8 @@ const TaskListDisplay: React.FC = () => {
 
   return (
     <div className="task-list">
-      <button type="button" onClick={() => navigate("/")}>
-        Back
+      <button className="back-btn" type="button" onClick={() => navigate("/")}>
+        <IoMdArrowBack /> &nbsp; back to home page
       </button>
       <h2>Task List</h2>
       <ol>
@@ -34,7 +36,12 @@ const TaskListDisplay: React.FC = () => {
           <li key={task.id}>
             <div>
               <p>{task.title}</p>
-              <button onClick={() => handleTaskDelete(task.id)}>Delete</button>
+              <button
+                className="delete-btn"
+                onClick={() => handleTaskDelete(task.id)}
+              >
+                <RxCross1 />
+              </button>
             </div>
           </li>
         ))}
