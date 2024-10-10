@@ -1,6 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import { CiBoxList } from "react-icons/ci";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -9,10 +11,11 @@ const Home: React.FC = () => {
       <h2>Home</h2>
       <div className="button-container">
         <button type="button" onClick={() => navigate("/task-list")}>
-          Task List
+          <CiBoxList />
+          &nbsp;Task List
         </button>
         <button type="button" onClick={() => navigate("/task-add")}>
-          Add Task
+          <MdFormatListBulletedAdd /> &nbsp;Add Task
         </button>
       </div>
     </div>

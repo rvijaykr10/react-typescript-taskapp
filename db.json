@@ -1,11 +1,5 @@
 {
-  "tasks": [
-    {
-      "id": "9cae",
-      "title": "task 1",
-      "description": "desc 1"
-    }
-  ],
+  "tasks": [],
   "users": [
     {
       "id": "1",
