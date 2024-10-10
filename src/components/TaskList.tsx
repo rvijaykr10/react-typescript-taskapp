@@ -8,6 +8,7 @@ import { RxCross1 } from "react-icons/rx";
 
 const TaskListDisplay: React.FC = () => {
   const [taskList, setTaskList] = useState<Task[]>([]);
+  const [isLoading, setIsloading] = useState<Boolean>(false);
 
   const navigate = useNavigate();
 
@@ -16,13 +17,15 @@ const TaskListDisplay: React.FC = () => {
   }, []);
 
   const loadTasks = async () => {
+    setIsloading(true);
     const tasks = await fetchAllTasks();
     setTaskList(tasks);
+    setIsloading(false);
   };
 
   const handleTaskDelete = async (taskId: number) => {
     await removeTask(taskId);
-    loadTasks(); // Refresh list after delete
+    loadTasks();
   };
 
   return (
@@ -31,21 +34,25 @@ const TaskListDisplay: React.FC = () => {
         <IoMdArrowBack /> &nbsp; back to home page
       </button>
       <h2>Task List</h2>
-      <ol>
-        {taskList.map((task) => (
-          <li key={task.id}>
-            <div>
-              <p>{task.title}</p>
-              <button
-                className="delete-btn"
-                onClick={() => handleTaskDelete(task.id)}
-              >
-                <RxCross1 />
-              </button>
-            </div>
-          </li>
-        ))}
-      </ol>
+      {isLoading && "Loading !"}
+      {!isLoading && taskList.length === 0 && "No Data Found !"}
+      {taskList.length > 0 && (
+        <ol>
+          {taskList.map((task) => (
+            <li key={task.id}>
+              <div>
+                <p>{task.title}</p>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleTaskDelete(task.id)}
+                >
+                  <RxCross1 />
+                </button>
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
     </div>
   );
 };
