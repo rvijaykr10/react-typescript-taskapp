@@ -23,9 +23,10 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start:app\" \"npm run start:json-server\"",
-    "start:app": "react-scripts start",
+    "start:app": "DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
     "start:json-server": "json-server --watch db.json --port 5000"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": [
       "react-app",
