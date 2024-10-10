@@ -2,11 +2,9 @@
     "builds": [
       {
         "src": "package.json",
-        "use": "@vercel/node"
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
       }
-    ],
-    "scripts": {
-      "start": "npm run start:app && npm run start:json-server"
-    }
+    ]
   }
   
