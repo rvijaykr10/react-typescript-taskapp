@@ -25,6 +25,10 @@ const TaskForm: React.FC<TaskFormProps> = ({
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.title === "" || formData.description === "") {
+      alert("Title and Description are mandatory !");
+      return;
+    }
     if (taskId) {
       await updateExistingTask(taskId, formData);
     } else {
@@ -45,14 +49,16 @@ const TaskForm: React.FC<TaskFormProps> = ({
           type="text"
           placeholder="Task Title"
           value={formData.title}
-          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, title: e.target.value.trim() })
+          }
         />
         <textarea
           rows={4}
           placeholder="Task Description"
           value={formData.description}
           onChange={(e) =>
-            setFormData({ ...formData, description: e.target.value })
+            setFormData({ ...formData, description: e.target.value.trim() })
           }
         ></textarea>
         <button type="submit">
