@@ -27,7 +27,6 @@ const TaskForm: React.FC<TaskFormProps> = ({
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.title === "") {
-      alert("Title is mandatory !");
       return;
     }
     setPending(true);
@@ -65,7 +64,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
           }
         ></textarea> */}
         <button
-          disabled={isPending}
+          disabled={formData.title.trim() === "" || isPending}
           style={isPending ? { cursor: "progress" } : {}}
           type="submit"
         >
