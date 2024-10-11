@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Task, TaskFormInput } from "../types/taskTypes";
 
-const BASE_URL = "https://fast-api-todo.onrender.com/tasks";
+const BASE_URL = "https://fast-api-todo.onrender.com";
 
 export const fetchAllTasks = async (): Promise<Task[]> => {
   const response = await axios.get(BASE_URL);
