@@ -18,15 +18,15 @@ const TaskForm: React.FC<TaskFormProps> = ({
   onSuccess,
 }) => {
   const [formData, setFormData] = useState<TaskFormInput>(
-    initialData || { title: "", description: "" }
+    initialData || { title: "" }
   );
 
   const navigate = useNavigate();
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.title === "" || formData.description === "") {
-      alert("Title and Description are mandatory !");
+    if (formData.title === "") {
+      alert("Title is mandatory !");
       return;
     }
     if (taskId) {
@@ -34,7 +34,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
     } else {
       await createNewTask(formData);
     }
-    setFormData({ title: "", description: "" });
+    setFormData({ title: "" });
     onSuccess();
   };
 
@@ -53,14 +53,14 @@ const TaskForm: React.FC<TaskFormProps> = ({
             setFormData({ ...formData, title: e.target.value.trim() })
           }
         />
-        <textarea
+        {/* <textarea
           rows={4}
           placeholder="Task Description"
           value={formData.description}
           onChange={(e) =>
             setFormData({ ...formData, description: e.target.value.trim() })
           }
-        ></textarea>
+        ></textarea> */}
         <button type="submit">
           <IoIosAdd />
           &nbsp;{taskId ? "Update" : "Create"} Task

@@ -11,7 +11,7 @@ export const fetchAllTasks = async (): Promise<Task[]> => {
 export const createNewTask = async (
   taskInput: TaskFormInput
 ): Promise<Task> => {
-  const response = await axios.post(BASE_URL, taskInput);
+  const response = await axios.post(BASE_URL, {...taskInput, completed: false});
   return response.data;
 };
 

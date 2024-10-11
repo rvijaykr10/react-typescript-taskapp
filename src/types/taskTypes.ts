@@ -6,5 +6,4 @@ export interface Task {
 
 export interface TaskFormInput {
   title: string;
-  description: string;
 }
