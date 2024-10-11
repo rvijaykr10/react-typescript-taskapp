@@ -8,7 +8,8 @@ import { RxCross1 } from "react-icons/rx";
 
 const TaskListDisplay: React.FC = () => {
   const [taskList, setTaskList] = useState<Task[]>([]);
-  const [isLoading, setIsloading] = useState<Boolean>(false);
+  const [isLoading, setIsloading] = useState<boolean>(false);
+  const [isPending, setPending] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -24,8 +25,10 @@ const TaskListDisplay: React.FC = () => {
   };
 
   const handleTaskDelete = async (taskId: number) => {
+    setPending(true);
     await removeTask(taskId);
     loadTasks();
+    setPending(false);
   };
 
   return (
@@ -44,6 +47,7 @@ const TaskListDisplay: React.FC = () => {
                 <p>{task.title}</p>
                 <button
                   className="delete-btn"
+                  style={isPending ? { cursor: "progress" } : {}}
                   onClick={() => handleTaskDelete(task.id)}
                 >
                   <RxCross1 />
