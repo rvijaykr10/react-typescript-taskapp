@@ -26,11 +26,11 @@ const TaskForm: React.FC<TaskFormProps> = ({
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setPending(true);
     if (formData.title === "") {
       alert("Title is mandatory !");
       return;
     }
+    setPending(true);
     if (taskId) {
       await updateExistingTask(taskId, formData);
     } else {
