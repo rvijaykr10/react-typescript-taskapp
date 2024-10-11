@@ -20,11 +20,13 @@ const TaskForm: React.FC<TaskFormProps> = ({
   const [formData, setFormData] = useState<TaskFormInput>(
     initialData || { title: "" }
   );
+  const [isPending, setPending] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPending(true);
     if (formData.title === "") {
       alert("Title is mandatory !");
       return;
@@ -35,6 +37,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
       await createNewTask(formData);
     }
     setFormData({ title: "" });
+    setPending(false);
     onSuccess();
   };
 
@@ -61,7 +64,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
             setFormData({ ...formData, description: e.target.value.trim() })
           }
         ></textarea> */}
-        <button type="submit">
+        <button disabled={isPending} type="submit">
           <IoIosAdd />
           &nbsp;{taskId ? "Update" : "Create"} Task
         </button>
