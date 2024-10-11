@@ -64,7 +64,11 @@ const TaskForm: React.FC<TaskFormProps> = ({
             setFormData({ ...formData, description: e.target.value.trim() })
           }
         ></textarea> */}
-        <button disabled={isPending} type="submit">
+        <button
+          disabled={isPending}
+          style={isPending ? { cursor: "progress" } : {}}
+          type="submit"
+        >
           <IoIosAdd />
           &nbsp;{taskId ? "Update" : "Create"} Task
         </button>
