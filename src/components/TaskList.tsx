@@ -41,10 +41,12 @@ const TaskListDisplay: React.FC = () => {
       {!isLoading && taskList.length === 0 && "No Data Found !"}
       {taskList?.length > 0 && (
         <ol>
-          {taskList?.map((task) => (
+          {taskList?.map((task, index) => (
             <li key={task.id}>
               <div>
-                <p>{task.title}</p>
+                <p>
+                  {index + 1}.&nbsp;{task.title}
+                </p>
                 <button
                   className="delete-btn"
                   style={isPending ? { cursor: "progress" } : {}}
