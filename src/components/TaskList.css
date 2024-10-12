@@ -11,9 +11,10 @@
 }
 
 .task-list ol {
-  border: 1px solid red;
   width: 300px;
   padding: 1rem;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .task-list ol li div {

@@ -51,9 +51,7 @@ const TaskForm: React.FC<TaskFormProps> = ({
           type="text"
           placeholder="Task Title"
           value={formData.title}
-          onChange={(e) =>
-            setFormData({ ...formData, title: e.target.value.trim() })
-          }
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
         />
         {/* <textarea
           rows={4}
