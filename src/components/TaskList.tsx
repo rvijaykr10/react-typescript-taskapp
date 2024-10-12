@@ -37,7 +37,7 @@ const TaskListDisplay: React.FC = () => {
         <IoMdArrowBack /> &nbsp; back to home page
       </button>
       <h2>Task List</h2>
-      {isLoading && "Loading !"}
+      {taskList?.length === 0 && isLoading && "Loading !"}
       {!isLoading && taskList.length === 0 && "No Data Found !"}
       {taskList?.length > 0 && (
         <ol>
