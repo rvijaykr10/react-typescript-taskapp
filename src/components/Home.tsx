@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
 import { CiBoxList } from "react-icons/ci";
 import { MdFormatListBulletedAdd } from "react-icons/md";
+import TaskList from "./TaskList";
+import TaskForm from "./TaskForm";
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
+  const [tab, setTab] = useState<string>("tasklist");
   return (
     <div className="home-page">
-      <h2>Home</h2>
       <div className="button-container">
-        <button type="button" onClick={() => navigate("/task-list")}>
+        <button
+          className={`${tab === "tasklist" ? "is-active" : ""}`}
+          type="button"
+          onClick={() => setTab("tasklist")}
+        >
           <CiBoxList />
           &nbsp;Task List
         </button>
-        <button type="button" onClick={() => navigate("/task-add")}>
+        <button
+          className={`${tab === "taskform" ? "is-active" : ""}`}
+          type="button"
+          onClick={() => setTab("taskform")}
+        >
           <MdFormatListBulletedAdd /> &nbsp;Add Task
         </button>
+      </div>
+      <div>
+        {tab === "tasklist" && <TaskList />}
+        {tab === "taskform" && <TaskForm />}
       </div>
     </div>
   );

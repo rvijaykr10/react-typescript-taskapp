@@ -2,16 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./TaskList.css";
 import { Task } from "../types/taskTypes";
 import { fetchAllTasks, removeTask } from "../services/taskAPI";
-import { useNavigate } from "react-router-dom";
-import { IoMdArrowBack } from "react-icons/io";
 import { RxCross1 } from "react-icons/rx";
 
 const TaskListDisplay: React.FC = () => {
   const [taskList, setTaskList] = useState<Task[]>([]);
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [isPending, setPending] = useState<boolean>(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     loadTasks();
@@ -33,9 +29,6 @@ const TaskListDisplay: React.FC = () => {
 
   return (
     <div className="task-list">
-      <button className="back-btn" type="button" onClick={() => navigate("/")}>
-        <IoMdArrowBack /> &nbsp; back to home page
-      </button>
       <h2>Task List</h2>
       {taskList?.length === 0 && isLoading && "Loading !"}
       {!isLoading && taskList.length === 0 && "No Data Found !"}
